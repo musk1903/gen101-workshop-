@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            background-color: #4CAF50; /* Crocodile green */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            background-color: #2E7D32; /* Darker green for button */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1B5E20; /* Even darker green on hover */
+        }
+
+        .fact {
+            margin-top: 20px;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fact.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <button id="factButton">Show Random Fact</button>
+        <p id="factDisplay" class="fact"></p>
+    </div>
+    <script>
+        const crocodileFacts = [
+            "Crocodiles can live for over 70 years in the wild.",
+            "They have the strongest bite of any animal, with a bite force of over 3,700 pounds per square inch.",
+            "Crocodiles are more closely related to birds than they are to lizards.",
+            "They can hold their breath underwater for up to an hour.",
+            "Crocodiles are cold-blooded reptiles, which means their body temperature is regulated by their environment.",
+            "They have a unique way of communicating, using a variety of vocalizations, including growls, hisses, and bellows.",
+            "Crocodiles can swim at speeds of up to 20 miles per hour in short bursts.",
+            "Their eyes have a special membrane that allows them to see clearly underwater.",
+            "Crocodiles can eat up to half of their body weight in one meal.",
+            "They are known to be very territorial and will defend their territory aggressively."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * crocodileFacts.length);
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = crocodileFacts[randomIndex];
+            factDisplay.classList.remove('visible'); // Reset opacity
+            void factDisplay.offsetWidth; // Trigger reflow
+            factDisplay.classList.add('visible'); // Add visible class
+        });
+    </script>
+</body>
+</html>
